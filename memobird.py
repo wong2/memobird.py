@@ -20,7 +20,7 @@ class Paper(object):
     def _ensure_gbk(text):
         try:
             text = text.decode('utf-8')
-        except UnicodeDecodeError:
+        except (UnicodeEncodeError, UnicodeDecodeError):
             pass
         return text.encode('gbk')
 

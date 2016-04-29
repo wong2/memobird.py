@@ -10,7 +10,7 @@ def fread(fname):
 
 setup(
     name='memobird',
-    version='0.1.0',
+    version='0.1.1',
     description='Memobird Python SDK',
     long_description=fread('README.md'),
     keywords='memobird',
