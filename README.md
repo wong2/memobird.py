@@ -28,7 +28,8 @@ In case you need more control of contents layout:
     paper = Paper()
     paper.add_text('text')
     paper.add_text('another text')
-    paper.add_image('/path/to/image.jpg')
+    paper.add_local_image('/path/to/image.jpg')
+    paper.add_net_image('http://xxx.xxx/xxx.jpg')
     paper.add_text('one more text')
     
     paper_id = memobird.print_paper(paper)
