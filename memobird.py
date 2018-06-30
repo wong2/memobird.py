@@ -91,7 +91,7 @@ class Memobird(object):
         return self.print_paper(paper)
 
     def is_paper_printed(self, paper_id):
-        resp = self._request('/getprintstat', data={
+        resp = self._request('/getprintstatus', data={
             'printcontentID': paper_id
         })
         return resp['printflag'] == 1
