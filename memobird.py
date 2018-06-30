@@ -5,6 +5,7 @@ from base64 import b64encode
 from cStringIO import StringIO
 from datetime import datetime
 from PIL import Image, ImageOps
+from io import BytesIO
 
 
 class ApiError(Exception):
@@ -29,9 +30,18 @@ class Paper(object):
         content = 'T:%s' % b64encode(text)
         self.contents.append(content)
 
-    def add_image(self, image):
+    def add_local_image(self, image):
         output = StringIO()
         im = Image.open(image)
+        im.thumbnail((384, 384), Image.ANTIALIAS)
+        ImageOps.flip(im).convert('1').save(output, 'BMP')
+        content = 'P:%s' % b64encode(output.getvalue())
+        self.contents.append(content)
+
+    def add_net_image(self, image):
+        output = StringIO()
+	response = requests.get(image)
+        im = Image.open(BytesIO(response.content))
         im.thumbnail((384, 384), Image.ANTIALIAS)
         ImageOps.flip(im).convert('1').save(output, 'BMP')
         content = 'P:%s' % b64encode(output.getvalue())
