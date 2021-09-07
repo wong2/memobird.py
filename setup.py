@@ -20,7 +20,7 @@ setup(
     license='MIT',
     py_modules=['memobird'],
     install_requires=[
-        'Pillow==3.2.0',
+        'Pillow==8.3.2',
         'requests==2.9.1',
     ],
     tests_require=['nose'],
