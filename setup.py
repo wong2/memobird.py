@@ -21,7 +21,7 @@ setup(
     py_modules=['memobird'],
     install_requires=[
         'Pillow==3.2.0',
-        'requests==2.9.1',
+        'requests==2.31.0',
     ],
     tests_require=['nose'],
     classifiers=[
